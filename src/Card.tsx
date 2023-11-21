@@ -1,5 +1,11 @@
+import './Card.css'
+
 const Card = () => {
-	return <></>
+	return (
+		<>
+			<div className={'card'}></div>
+		</>
+	)
 }
 
 export default Card
