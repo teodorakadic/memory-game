@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import './Board.css'
 import Card from './Card'
 
 interface Props {
@@ -5,21 +7,26 @@ interface Props {
 }
 
 const Board = ({ size }: Props) => {
-	const deck = new Array(size).fill(new Array(size).fill(0))
+	const [selected, setSelected] = useState(false)
+	const deckSize = new Array(size).fill(new Array(size).fill(0))
+
+	const handleCardClick = () => {
+		setSelected(!selected)
+	}
 	return (
-		<>
-			{deck.map(
+		<div className="board">
+			{deckSize.map(
 				(row, rowI) =>
 					row.map((el: number, elI: number) => (
 						<>
-							{elI}
-							<Card />
+							{/* {elI} */}
+							<Card selected={selected} handleClick={handleCardClick} />
 						</>
 					))
 
 				// <Card />
 			)}
-		</>
+		</div>
 	)
 }
 

@@ -1,5 +1,12 @@
 .card {
 	height: 40px;
 	width: 40px;
-	background: lightsteelblue;
+	margin: 10px;
+	border-radius: 5px;
+	background: whitesmoke;
+}
+
+.selected {
+	transform: rotateY(180deg);
+	transition: transform 0.5s;
 }
