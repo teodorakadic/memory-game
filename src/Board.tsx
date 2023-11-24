@@ -8,6 +8,7 @@ interface Props {
 
 const Board = ({ size }: Props) => {
 	const [selected, setSelected] = useState(false)
+	const value = '💫'
 	const deckSize = new Array(size).fill(new Array(size).fill(0))
 
 	const handleCardClick = () => {
@@ -20,7 +21,11 @@ const Board = ({ size }: Props) => {
 					row.map((el: number, elI: number) => (
 						<>
 							{/* {elI} */}
-							<Card selected={selected} handleClick={handleCardClick} />
+							<Card
+								value={value}
+								selected={selected}
+								handleClick={handleCardClick}
+							/>
 						</>
 					))
 

@@ -1,9 +1,18 @@
-.card {
+.card-wrapper {
 	height: 40px;
 	width: 40px;
 	margin: 10px;
 	border-radius: 5px;
+	border: 1px solid black;
 	background: whitesmoke;
+}
+
+.card-front {
+	font-size: 25px;
+}
+
+.card-back {
+	background: #ecb8ff;
 }
 
 .selected {
