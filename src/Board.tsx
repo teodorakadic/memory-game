@@ -7,7 +7,7 @@ interface Props {
 	size: number
 }
 
-type selectedCardType = {
+type SelectedCardType = {
 	value: number | string
 	selected: boolean
 	cleared: boolean
@@ -16,14 +16,17 @@ type selectedCardType = {
 
 const Board = ({ size }: Props) => {
 	const deckSize = new Array(size).fill(new Array(size).fill(0))
-	const [selected, setSelected] = useState<selectedCardType | null>(null)
 	const [deck, setDeck] = useState<null | DeckType>(null)
+	const [selected, setSelected] = useState<SelectedCardType | null>(null)
+	const [delayRunning, setDelayRunning] = useState(false)
 
 	useEffect(() => {
 		setDeck(buildDeck((size * size) / 2))
 	}, [])
 
 	const handleCardClick = (card: CardType, i: number) => {
+		if (delayRunning) return
+
 		// No card selected yet
 		if (selected === null) {
 			const deckCopy = deck!.map((card, cardI) => {
@@ -42,6 +45,7 @@ const Board = ({ size }: Props) => {
 			// Card already selected
 			return
 		} else {
+			setDelayRunning(true)
 			const deckCopy = deck!.map((card, cardI) => {
 				if (cardI === i) {
 					// Set card to selected
@@ -54,21 +58,28 @@ const Board = ({ size }: Props) => {
 
 		// Match found
 		if (selected.value === card.value) {
-			const deckCopy = deck!.map((card) => {
-				if (card.value === selected.value) return { ...card, cleared: true }
-				else return card
-			})
-			// Set deck with cleared cards
-			setDeck(deckCopy)
+			setTimeout(() => {
+				const deckCopy = deck!.map((card) => {
+					if (card.value === selected.value) return { ...card, cleared: true }
+					else return card
+				})
+				// Set deck with cleared cards
+				setDeck(deckCopy)
+				setSelected(null)
+				setDelayRunning(false)
+			}, 800)
 		}
 		// Mismatch
 		else {
-			const deckCopy = deck!.map((card) => {
-				return { ...card, selected: false }
-			})
-			// Set deck to no cards selected
-			setDeck(deckCopy)
-			setSelected(null)
+			setTimeout(() => {
+				const deckCopy = deck!.map((card) => {
+					return { ...card, selected: false }
+				})
+				// Set deck to no cards selected
+				setDeck(deckCopy)
+				setSelected(null)
+				setDelayRunning(false)
+			}, 800)
 		}
 	}
 
