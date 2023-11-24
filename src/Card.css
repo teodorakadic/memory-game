@@ -1,21 +1,69 @@
 .card-wrapper {
 	height: 40px;
 	width: 40px;
-	margin: 10px;
+	margin: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	position: relative;
+	perspective: 100px;
 	border-radius: 5px;
+	cursor: pointer;
+}
+
+.content {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	transition: 0.5s;
+	transform-style: preserve-3d;
 	border: 1px solid black;
-	background: whitesmoke;
+	border-radius: 5px;
+	box-shadow: 0 0 black;
+	user-select: none;
 }
 
 .card-front {
 	font-size: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transform: rotateY(180deg);
+	background: white;
 }
 
 .card-back {
 	background: #ecb8ff;
 }
 
-.selected {
+.card-back:hover {
+	background: yellow;
+}
+
+.card-back,
+.card-front {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	backface-visibility: hidden;
+	border-radius: 5px;
+}
+
+.selected .content {
 	transform: rotateY(180deg);
 	transition: transform 0.5s;
+}
+
+.cleared {
+	pointer-events: none;
+}
+
+.card-wrapper.cleared .content {
+	transform: rotateX(180deg) scale(0);
+	transition: 1s;
 }

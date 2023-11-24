@@ -1,3 +1,11 @@
-.board {
+.board-wrapper {
 	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.row {
+	display: flex;
+	flex-flow: row nowrap;
 }

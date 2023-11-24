@@ -1,26 +1,25 @@
 import './Card.css'
 
 interface Props {
-	value?: number | string
+	value: string
 	selected: boolean
-	handleClick: () => void
+	cleared: boolean
+	handleClick: (value: string) => void
 }
 
-// const handleClick = () => {}
-
-const Card = ({ value, selected, handleClick }: Props) => {
+const Card = ({ value, selected, cleared, handleClick }: Props) => {
 	return (
-		<>
-			<div
-				className={`card-wrapper ${selected ? 'selected' : ''}`}
-				onClick={() => handleClick()}
-			>
-				<div className="content">
-					<div className="card-back"></div>
-					<div className="card-front">{value}</div>
-				</div>
+		<div
+			className={`card-wrapper
+				${selected ? 'selected' : ''}
+			${cleared ? 'cleared' : ''}`}
+			onClick={() => handleClick(value)}
+		>
+			<div className="content">
+				<div className="card-back"></div>
+				<div className="card-front">{value}</div>
 			</div>
-		</>
+		</div>
 	)
 }
 
