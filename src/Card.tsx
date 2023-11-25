@@ -1,18 +1,26 @@
-import './Card.css'
+import './styles/Card.css'
 
 interface Props {
 	value: string
 	selected: boolean
 	cleared: boolean
 	handleClick: (value: string) => void
+	delayRunning?: boolean
 }
 
-const Card = ({ value, selected, cleared, handleClick }: Props) => {
+const Card = ({
+	value,
+	selected,
+	cleared,
+	handleClick,
+	delayRunning
+}: Props) => {
 	return (
 		<div
 			className={`card-wrapper
 				${selected ? 'selected' : ''}
-			${cleared ? 'cleared' : ''}`}
+			${cleared ? 'cleared' : ''}
+			${!delayRunning ? ' selectable' : ''}`}
 			onClick={() => handleClick(value)}
 		>
 			<div className="content">

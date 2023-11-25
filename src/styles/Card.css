@@ -9,6 +9,7 @@
 	position: relative;
 	perspective: 100px;
 	border-radius: 5px;
+	transition: 0.5s;
 	cursor: pointer;
 }
 
@@ -22,12 +23,11 @@
 	transform-style: preserve-3d;
 	border: 1px solid black;
 	border-radius: 5px;
-	box-shadow: 0 0 black;
 	user-select: none;
 }
 
 .card-front {
-	font-size: 25px;
+	font-size: 26px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -39,7 +39,7 @@
 	background: #ecb8ff;
 }
 
-.card-back:hover {
+.selectable:hover .card-back {
 	background: yellow;
 }
 
@@ -54,12 +54,13 @@
 	border-radius: 5px;
 }
 
-.selected .content {
+.card-wrapper.selected .content {
 	transform: rotateY(180deg);
 	transition: transform 0.5s;
 }
 
 .cleared {
+	/* Cleared/hidden cards can't be clicked: */
 	pointer-events: none;
 }
 

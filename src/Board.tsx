@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './Board.css'
+import './styles/Board.css'
 import Card from './Card'
 import { CardType, DeckType, buildDeck } from './utils'
 
@@ -98,6 +98,7 @@ const Board = ({ size }: Props) => {
 										value={card.value}
 										selected={card.selected}
 										cleared={card.cleared}
+										delayRunning={delayRunning}
 										handleClick={() =>
 											handleCardClick(card, rowI * deckSize.length + i)
 										}

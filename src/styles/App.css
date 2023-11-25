@@ -1,0 +1,19 @@
+html,
+body,
+div {
+	font: inherit;
+}
+
+body {
+	line-height: 1;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.App {
+	margin: 0px;
+	min-height: 100vh;
+	background: pink;
+}
