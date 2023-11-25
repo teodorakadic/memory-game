@@ -1,4 +1,5 @@
 .card-wrapper {
+	/* scale: 0; */
 	height: 50px;
 	width: 50px;
 	margin: 5px;
@@ -21,9 +22,21 @@
 	width: 100%;
 	transition: 0.5s;
 	transform-style: preserve-3d;
-	/* border: 1px solid grey; */
 	border-radius: 8px;
 	user-select: none;
+	animation: enter 1s ease-out;
+}
+
+@keyframes enter {
+	0% {
+		transform: rotateZ(0deg) scale(0%);
+	}
+	/* 50% {
+		transform: rotateZ(360deg) scale(50%);
+	} */
+	100% {
+		transform: rotateZ(180deg) scale(100%);
+	}
 }
 
 .card-front {
@@ -32,13 +45,14 @@
 	justify-content: center;
 	align-items: center;
 	transform: rotateY(180deg);
-	box-shadow: 2px 2px 2px rgb(234, 234, 234);
+	box-shadow: 2px 2px 2px rgb(229, 229, 229);
 	background: white;
 }
 
 .card-back {
-	background: #ecb8ff;
+	background: #fcb3ff;
 	box-shadow: 2px 2px 2px rgb(234, 234, 234);
+	transition: 0.3s;
 }
 
 .selectable:hover .card-back {
