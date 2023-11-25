@@ -1,6 +1,6 @@
 .card-wrapper {
-	height: 40px;
-	width: 40px;
+	height: 50px;
+	width: 50px;
 	margin: 5px;
 	display: flex;
 	justify-content: center;
@@ -8,7 +8,7 @@
 
 	position: relative;
 	perspective: 100px;
-	border-radius: 5px;
+	border-radius: 8px;
 	transition: 0.5s;
 	cursor: pointer;
 }
@@ -21,22 +21,24 @@
 	width: 100%;
 	transition: 0.5s;
 	transform-style: preserve-3d;
-	border: 1px solid black;
-	border-radius: 5px;
+	/* border: 1px solid grey; */
+	border-radius: 8px;
 	user-select: none;
 }
 
 .card-front {
-	font-size: 26px;
+	font-size: 30px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	transform: rotateY(180deg);
+	box-shadow: 2px 2px 2px rgb(234, 234, 234);
 	background: white;
 }
 
 .card-back {
 	background: #ecb8ff;
+	box-shadow: 2px 2px 2px rgb(234, 234, 234);
 }
 
 .selectable:hover .card-back {
@@ -51,7 +53,7 @@
 	height: 100%;
 	width: 100%;
 	backface-visibility: hidden;
-	border-radius: 5px;
+	border-radius: 8px;
 }
 
 .card-wrapper.selected .content {
