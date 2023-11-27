@@ -5,6 +5,7 @@ import { CardType, DeckType, buildDeck } from './utils'
 
 interface Props {
 	size: number
+	gameState: string
 }
 
 type SelectedCardType = {
@@ -14,7 +15,7 @@ type SelectedCardType = {
 	i?: number
 }
 
-const Board = ({ size }: Props) => {
+const Board = ({ size, gameState }: Props) => {
 	const deckSize = new Array(size).fill(new Array(size).fill(0))
 	const [deck, setDeck] = useState<null | DeckType>(null)
 	const [selected, setSelected] = useState<SelectedCardType | null>(null)
@@ -24,7 +25,13 @@ const Board = ({ size }: Props) => {
 		setDeck(buildDeck((size * size) / 2))
 	}, [])
 
+	// useEffect(() => {
+	// 	// Wait for card 'enter' animation
+	// 	setTimeout(() => {}, 1000)
+	// })
+
 	const handleCardClick = (card: CardType, i: number) => {
+		if (gameState != 'active') return
 		if (delayRunning) return
 
 		// No card selected yet
@@ -99,6 +106,7 @@ const Board = ({ size }: Props) => {
 										selected={card.selected}
 										cleared={card.cleared}
 										delayRunning={delayRunning}
+										gameState={gameState}
 										handleClick={() =>
 											handleCardClick(card, rowI * deckSize.length + i)
 										}

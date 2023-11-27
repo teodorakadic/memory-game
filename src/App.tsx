@@ -24,6 +24,7 @@ function App() {
 				setDifficulty('hard')
 				setSize(new Array(8).fill(8))
 		}
+
 		setGameState('active')
 	}
 
@@ -31,14 +32,29 @@ function App() {
 		<div className="App">
 			{gameState === 'new' && (
 				<>
-					<button onClick={() => handleDifficultyClick('easy')}>easy</button>
-					<button onClick={() => handleDifficultyClick('medium')}>
+					<button
+						className="difficulty-button"
+						onClick={() => handleDifficultyClick('easy')}
+					>
+						easy
+					</button>
+					<button
+						className="difficulty-button"
+						onClick={() => handleDifficultyClick('medium')}
+					>
 						medium
 					</button>
-					<button onClick={() => handleDifficultyClick('hard')}>hard</button>
+					<button
+						className="difficulty-button"
+						onClick={() => handleDifficultyClick('hard')}
+					>
+						hard
+					</button>
 				</>
 			)}
-			{gameState === 'active' && <Board size={size.length}></Board>}
+			{gameState === 'active' && (
+				<Board size={size.length} gameState={gameState}></Board>
+			)}
 		</div>
 	)
 }

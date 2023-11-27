@@ -6,6 +6,7 @@ interface Props {
 	cleared: boolean
 	handleClick: (value: string) => void
 	delayRunning?: boolean
+	gameState: string
 }
 
 const Card = ({
@@ -13,7 +14,8 @@ const Card = ({
 	selected,
 	cleared,
 	handleClick,
-	delayRunning
+	delayRunning,
+	gameState
 }: Props) => {
 	return (
 		<div

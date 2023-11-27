@@ -1,3 +1,9 @@
+@font-face {
+	font-family: 'Stolzl';
+	src: local('Stolzl'),
+		url('../fonts/Stolzl/stolzl_regular.otf') format('opentype');
+}
+
 html,
 body,
 div {
@@ -15,4 +21,23 @@ body {
 .App {
 	min-height: 100vh;
 	background: aliceblue;
+}
+
+.difficulty-button {
+	width: 150px;
+	font-family: 'Stolzl';
+	height: 50px;
+	border-radius: 30px;
+	border-width: 0px;
+	font-size: 15px;
+	background: white;
+	margin: 5px;
+	color: grey;
+	text-transform: capitalize;
+}
+
+.difficulty-button:hover {
+	box-shadow: 4px 4px 4px rgb(229, 229, 229, 0.3);
+	transform: translateY(-3px);
+	transition: 0.2s ease-out;
 }

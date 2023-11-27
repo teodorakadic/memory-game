@@ -30,12 +30,14 @@
 @keyframes enter {
 	0% {
 		transform: rotateZ(0deg) scale(0%);
+		opacity: 0;
 	}
 	/* 50% {
 		transform: rotateZ(360deg) scale(50%);
 	} */
 	100% {
-		transform: rotateZ(180deg) scale(100%);
+		transform: rotateZ(90deg) scale(100%);
+		opacity: 1;
 	}
 }
 
